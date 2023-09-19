@@ -61,6 +61,10 @@ typedef struct alias_s
 
 /* Global aliases linked list */
 alias_t *aliases;
+/* Global program name */
+char *name;
+/* Global history counter */
+int hist;
 
 /* Functions Helpers for main */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
