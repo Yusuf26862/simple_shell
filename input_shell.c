@@ -30,12 +30,12 @@ char *get_args(char *line, int *exe_ret)
 	if (read == 1)
 	{
 		hist++;
-		if (isatty(STDIN_FILENO))
+		if (isatty(STDIN_FILENO)) /*If cmd is piped in*/
 			write(STDOUT_FILENO, prompt, 2);
 		return (get_args(line, exe_ret));
 	}
 
-	line[read - 1] = '\0';
+	line[read - 1] = '\0'; /*The cmd must end with NULL term not newline*/
 	variable_replacement(&line, exe_ret);
 	handle_line(&line, read);
 
